@@ -8,9 +8,15 @@ namespace fabricantevendedor
         private Almacen _a;
         private Thread _t;
         private Random _rnd = new Random();
+
+        private long _initTime;
+
+        
         public Fabricante(Almacen a)
         {
+            this._initTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             this._a = a;
+            
         }
 
         public void Fabrica()
@@ -27,9 +33,9 @@ namespace fabricantevendedor
         private void _Accion()
         {
             int ms;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
-                ms = _rnd.Next(1000, 2000);
+                ms = _rnd.Next(500);
                 Thread.Sleep(ms);
                 _a.Guardar();
             }
