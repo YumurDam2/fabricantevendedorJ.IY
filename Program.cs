@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace fabricantevendedor
 {
@@ -10,10 +11,18 @@ namespace fabricantevendedor
             Almacen almacen = new Almacen();
             Fabricante fabricante = new Fabricante(almacen);
             Vendedor vendedor = new Vendedor(almacen);
-            fabricante.Fabrica();
-            vendedor.Vende();
+            Vendedor vendedor2 = new Vendedor(almacen);
+            Vendedor vendedor3 = new Vendedor(almacen);
+
+
+            fabricante.Fabrica(500, 8);
+            vendedor.Vende(800, 3);
+            vendedor2.Vende(1000, 3);
+            vendedor3.Vende(1200, 2);
             fabricante.Termina();
             vendedor.Termina();
+            vendedor2.Termina();
+            vendedor3.Termina();
             Console.WriteLine("FIN");
         }
     }
